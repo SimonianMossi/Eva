@@ -4,36 +4,28 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Ποίηση και φωτογραφίες!</title>
-    <meta name="description" content="Scrollama: Sticky Side Example" />
+    <meta name="description" content="Scrollama: Sticky Overlay Example" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
     <style>
       #scrolly {
         position: relative;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
         background-color: #f3f3f3;
-        padding: 0rem;
-      }
-
-      #scrolly > * {
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
+        padding: 1rem;
       }
 
       article {
         position: relative;
-        padding: 0 0rem;
-        max-width: 7rem;
+        padding: 0;
+        max-width: 20rem;
+        margin: 0 auto;
       }
 
       .sticky-thing {
         position: -webkit-sticky;
         position: sticky;
+        left: 0;
         width: 100%;
-        height: 100%;
         margin: 0;
         background-color: #8a8a8a;
         z-index: 0;
@@ -43,38 +35,38 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url('images/295073606_398446335715793_532434817060372310_n.jpg');
+		background-image: url('images/295073606_398446335715793_532434817060372310_n.jpg');
         background-size: cover;
       }
 
       .sticky-thing p {
-        padding: 0.1rem;
-        font-size: 2rem;
+        font-size: 8rem;
         font-weight: 900;
         color: #fff;
-
       }
 
       .step {
         margin: 0 auto 2rem auto;
-        margin-bottom: 25rem;
-        background-color: #3b3b3b;
+		margin-bottom: 25rem;
         color: #fff;
+        background-color: #3b3b3b3d;
+;
       }
 
       .step:last-child {
         margin-bottom: 0;
       }
 
-      .step.is-active {
-        background-color: goldenrod;
-        color: #3b3b3b;
+      .step.is-active p {
+        background-color: #3b3b3b3d;
+        color:  #fff;
       }
 
       .step p {
         text-align: center;
-        padding: 0rem;
-        font-size: 0.8rem;
+        padding: 1rem;
+        font-size: 1.5rem;
+        background-color: #131313c0;
       }
     </style>
   </head>
@@ -84,45 +76,50 @@
       <section id="intro">
         <h1 class="intro__hed">Ποίηση και φωτογραφίες!</h1>
         <p class="intro__dek">
-          Σκρόλαρε προς τα κάτω γλυκιά μου.
+			Σκρόλαρε προς τα κάτω γλυκιά μου.
         </p>
       </section>
 
       <section id="scrolly">
-        <article>
-          <div class="step" data-step=" " data-image="url('images/295073606_398446335715793_532434817060372310_n.jpg')">
-            <p> Η πιο όμορφη θάλασσα</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295358209_736360130799248_7624835301061078319_n.jpg')">
-            <p>Είναι αυτή που δεν έχουμε ακόμα ταξιδέψει</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295709225_772323580574941_4388595980574073296_n.jpg')">
-            <p>Τα πιο όμορφα παιδιά</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/296176750_6062469927112974_3159473145055194731_n.jpg')">
-            <p>Δεν έχουν μεγαλώσει ακόμα</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295534527_751343336098126_7312425958382812441_n.jpg')">
-            <p>Τις πιο όμορφες μέρες</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295374324_451714606571510_1375045421728275160_n.jpg')">
-            <p>δεν τις έχουμε ζήσει ακόμα</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295498466_5271194306329761_4200165638716084918_n.jpg')">
-            <p>Κι αυτό που θέλω να σου πω</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295495382_435026225218140_907114816960880710_n.jpg')">
-            <p>Το πιο όμορφο απ' όλα</p>
-          </div>
-          <div class="step" data-step=" " data-image="url('images/295966142_395222875832564_4859160262014032077_n.jpg')">
-            <p>δε στο 'χω πει ακόμα.</p>
-          </div>
-        </article>
 
-        <div class="sticky-thing">
-          <p> </p>
-        </div>
-      </section>
+		<section id="scrolly">
+			<div class="sticky-thing">
+				<p> </p>
+			</div>
+
+			<article>
+			  <div class="step" data-step=" " data-image="url('images/295073606_398446335715793_532434817060372310_n.jpg')">
+				<p> Η πιο όμορφη θάλασσα</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295358209_736360130799248_7624835301061078319_n.jpg')">
+				<p>Είναι αυτή που δεν έχουμε ακόμα ταξιδέψει</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295709225_772323580574941_4388595980574073296_n.jpg')">
+				<p>Τα πιο όμορφα παιδιά</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/296176750_6062469927112974_3159473145055194731_n.jpg')">
+				<p>Δεν έχουν μεγαλώσει ακόμα</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295534527_751343336098126_7312425958382812441_n.jpg')">
+				<p>Τις πιο όμορφες μέρες</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295374324_451714606571510_1375045421728275160_n.jpg')">
+				<p>δεν τις έχουμε ζήσει ακόμα</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295498466_5271194306329761_4200165638716084918_n.jpg')">
+				<p>Κι αυτό που θέλω να σου πω</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295495382_435026225218140_907114816960880710_n.jpg')">
+				<p>Το πιο όμορφο απ' όλα</p>
+			  </div>
+			  <div class="step" data-step=" " data-image="url('images/295966142_395222875832564_4859160262014032077_n.jpg')">
+				<p>δε στο 'χω πει ακόμα.</p>
+			  </div>
+			  
+			</article>
+	
+
+		  </section>
 
       <section id="outro"></section>
     </main>
@@ -145,7 +142,6 @@
       function handleStepEnter(response) {
         // response = { element, direction, index }
         var el = response.element;
-        console.log(el)
 
         // remove is-active from all steps
         // then add is-active to this step
@@ -154,14 +150,17 @@
 
         // update graphic based on step
         sticky.querySelector("p").innerText = el.dataset.step;
-        sticky.style.backgroundImage = el.dataset.image;
+		sticky.style.backgroundImage = el.dataset.image;
       }
 
       function init() {
+        // 2. setup the scroller passing options
+        // 		this will also initialize trigger observations
+        // 3. bind scrollama event handlers (this can be chained like below)
         scroller
           .setup({
             step: "#scrolly article .step",
-            offset: 0.33,
+            offset: 0.9,
             debug: false
           })
           .onStepEnter(handleStepEnter);
