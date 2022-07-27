@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ποίηση και φωτογραφίες!</title>
+    <meta name="description" content="Scrollama: Sticky Side Example" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #scrolly {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        background-color: #f3f3f3;
+        padding: 5rem;
+      }
+
+      #scrolly > * {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+      }
+
+      article {
+        position: relative;
+        padding: 0 1rem;
+        max-width: 20rem;
+      }
+
+      .sticky-thing {
+        position: -webkit-sticky;
+        position: sticky;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #8a8a8a;
+        z-index: 0;
+        top: 12.5vh;
+        height: 75vh;
+        /* Center everything inside */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url('images/295073606_398446335715793_532434817060372310_n.jpg');
+        background-size: cover;
+      }
+
+      .sticky-thing p {
+        padding: 1rem;
+        font-size: 8rem;
+        font-weight: 900;
+        color: #fff;
+
+      }
+
+      .step {
+        margin: 0 auto 2rem auto;
+        margin-bottom: 25rem;
+        background-color: #3b3b3b;
+        color: #fff;
+      }
+
+      .step:last-child {
+        margin-bottom: 0;
+      }
+
+      .step.is-active {
+        background-color: goldenrod;
+        color: #3b3b3b;
+      }
+
+      .step p {
+        text-align: center;
+        padding: 0rem;
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section id="intro">
+        <h1 class="intro__hed">Ποίηση και φωτογραφίες!</h1>
+        <p class="intro__dek">
+          Σκρόλαρε προς τα κάτω γλυκιά μου.
+        </p>
+      </section>
+
+      <section id="scrolly">
+        <article>
+          <div class="step" data-step=" " data-image="url('images/295073606_398446335715793_532434817060372310_n.jpg')">
+            <p> Η πιο όμορφη θάλασσα</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/295358209_736360130799248_7624835301061078319_n.jpg')">
+            <p>Είναι αυτή που δεν έχουμε ακόμα ταξιδέψει</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/295709225_772323580574941_4388595980574073296_n.jpg')">
+            <p>Τα πιο όμορφα παιδιά</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/296176750_6062469927112974_3159473145055194731_n.jpg')">
+            <p>Δεν έχουν μεγαλώσει ακόμα</p>
+          </div>
+          <div class="step" data-step="5" data-image="url('images/295534527_751343336098126_7312425958382812441_n.jpg')">
+            <p>Τις πιο όμορφες μέρες</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/295374324_451714606571510_1375045421728275160_n.jpg')">
+            <p>δεν τις έχουμε ζήσει ακόμα</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/295498466_5271194306329761_4200165638716084918_n.jpg')">
+            <p>Κι αυτό που θέλω να σου πω</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/295495382_435026225218140_907114816960880710_n.jpg')">
+            <p>Το πιο όμορφο απ' όλα</p>
+          </div>
+          <div class="step" data-step=" " data-image="url('images/295966142_395222875832564_4859160262014032077_n.jpg')">
+            <p>δε στο 'χω πει ακόμα.</p>
+          </div>
+        </article>
+
+        <div class="sticky-thing">
+          <p> </p>
+        </div>
+      </section>
+
+      <section id="outro"></section>
+    </main>
+
+    <!-- <div class='debug'></div> -->
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script>
+      // using d3 for convenience
+      var main = document.querySelector("main");
+      var scrolly = main.querySelector("#scrolly");
+      var sticky = scrolly.querySelector(".sticky-thing");
+      var article = scrolly.querySelector("article");
+      var steps = article.querySelectorAll(".step");
+
+      // initialize the scrollama
+      var scroller = scrollama();
+
+      // scrollama event handlers
+      function handleStepEnter(response) {
+        // response = { element, direction, index }
+        var el = response.element;
+        console.log(el)
+
+        // remove is-active from all steps
+        // then add is-active to this step
+        steps.forEach(step => step.classList.remove('is-active'));
+        el.classList.add('is-active');
+
+        // update graphic based on step
+        sticky.querySelector("p").innerText = el.dataset.step;
+        sticky.style.backgroundImage = el.dataset.image;
+      }
+
+      function init() {
+        scroller
+          .setup({
+            step: "#scrolly article .step",
+            offset: 0.33,
+            debug: false
+          })
+          .onStepEnter(handleStepEnter);
+
+        // setup resize event
+        window.addEventListener("resize", scroller.resize);
+      }
+
+      // kick things off
+      init();
+    </script>
+  </body>
+</html>
